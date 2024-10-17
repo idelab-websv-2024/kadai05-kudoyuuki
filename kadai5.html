@@ -4,11 +4,23 @@
     <meta charset="utf-8">
     <title>createElement, appendChild</title>
     <script type="text/javascript">
+      function addItem() {
+        var linkname = document.getElementById('linkname').value;
+        var href = document.getElementById('href').value;
 
-      function addItem()
-      {
-		  var bookmark = document.getElementById('bookmark');
-		  var row = document.createElement('li');
+        var row = document.createElement('li');
+
+        var bookmark = document.createElement('a');
+
+        bookmark.innerHTML = linkname;
+
+        bookmark.setAttribute('href', href);
+
+        bookmark.setAttribute('target', '_blank');
+
+        row.appendChild(bookmark);
+
+        document.getElementById('bookmarkList').appendChild(row);
 		  // 課題：
 		  // row の中に id:linkname のテキストを入れてから
 		  // bookmark に appendChild しなさい。
@@ -22,10 +34,9 @@
 		  // （強制的に文字列を生成して、li タグの innerHTML に指定しても動きますが、
 		  // 　いちおう、ちゃんと createElement してみましょう）
 		  // https://www.w3schools.com/jsref/prop_link_href.asp
-
-      }
-
-    </script>
+    }
+    
+  </script>
   </head>
   <body>
     <h1>createElement, appendChild</h1>
@@ -35,6 +46,6 @@
     <input type="text" id="linkname" value=""><br />
 	  <input type="text" id="href" value="">
 
-    <ul id='bookmark'></ul>
+    <ul id='bookmarkList'></ul>
   </body>
 </html>
